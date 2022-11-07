@@ -1,0 +1,7 @@
+<h1>Sign in!</h1>
+<form method="post" action="{% url 'sign in' %}">
+    {{ form.as_p }}
+    <input name="next" type="hidden" value="{{ next }}">
+    <button>Sign in!</button>
+    {% csrf_token %}
+</form>
