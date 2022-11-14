@@ -1,0 +1,40 @@
+{#<form method="get" action="{% url 'employee list' %}">#}
+{#    <label>#}
+{#        <select name="page_size">#}
+{#            <option value="3">3</option>#}
+{#            <option value="4">4</option>#}
+{#            <option value="6">6</option>#}
+{#        </select>#}
+{#    </label>#}
+{#    <button>Set</button>#}
+{#</form>#}
+<div>
+    <a href="{% url 'employee list' %}?page_size=3">3</a>
+    <a href="{% url 'employee list' %}?page_size=4">4</a>
+    <a href="{% url 'employee list' %}?page_size=6">6</a>
+</div>
+
+{% if page_obj.has_previous %}
+    <a href="?page=1">first</a>
+    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+{% else %}
+    <a>first</a>
+    <a>previous</a>
+{% endif %}
+Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+{% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">next</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">last</a>
+{% else %}
+    <a>next</a>
+    <a>last</a>
+{% endif %}
+
+<ol>
+    {% for employee in employee_list %}
+        <li>
+            {{ employee.full_name }}
+        </li>
+    {% endfor %}
+</ol>
+
