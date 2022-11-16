@@ -1,0 +1,7 @@
+<h1>Profiles list ({{ profiles_count }})</h1>
+<h2>{{ query }}</h2>
+<ul>
+    {% for profile in profile_list %}
+        <li>{{ profile.name }}</li>
+    {% endfor %}
+</ul>
