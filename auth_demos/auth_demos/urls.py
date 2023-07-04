@@ -1,37 +1,22 @@
+"""
+URL configuration for auth_demos project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('django.contrib.auth.urls')),
-    path('', include('auth_demos.web.urls')),
 ]
-# NEVER name your auth app `auth`
-# Name it `app_auth`, `my_auth`, `PROJECT_NAME_auth`
-
-# auth - authentication or authorization
-
-
-# Auth flow:
-'''
-# Authentication
-The User sends the credentials to a system
-    - username & password, phone number + sms code, authentication app
-
-# Authorization
-After authentication, the system authorizes the user
-'''
-
-'''
-Web1 (web app)
-    - SoftUni_key = '4124-4223-4123-543344-44445f'  
-Web2 (web app)
-    - SoftUni_key = '4124-4223-4123-543344-44445f'
-'''
-
-
-
-'''
-DB -> pbkdf2_sha256$600000$mRXUALQeOzCy827c04wqTi$Be6T0jkXZf8ZRTc687POfDxo7O1eJcEJAYnP2Y1fBuk=
-1123QwER -> pbkdf2_sha256$600000$mRXUALQeOzCy827c04wqTi$Be6T0jkXZf8ZRTc687POfDxo7O1eJcEJAYnP2Y1fBuk=
-'''
