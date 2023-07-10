@@ -94,6 +94,7 @@ class ArticlesListView(views.ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['search'] = self.request.GET.get('search', '')
+        # context['categories'] = Category.objects.all()
         return context
 
 
