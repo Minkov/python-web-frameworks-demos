@@ -62,5 +62,12 @@ def create_task(request):
     # post_save
     return redirect('index')
 
+# def update_task(request, pk):
+#     task = Task.objects.filter(pk=pk) \
+#         .get()
+#     if request.user != task.user:
+#         raise Exception
+#     ...
+
 class TasksList(views.ListView):
     pass
