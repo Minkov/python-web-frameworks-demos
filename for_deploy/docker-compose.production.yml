@@ -3,9 +3,10 @@ version: '3.4'
 services:
 
   web:
-    image: for_deploy_demo
+    image: minkov/for_deploy_demo
     build: .
     command: gunicorn --bind=0.0.0.0:8000 for_deploy.wsgi:application
+    platform: linux/amd64
     ports:
       - "8000:8000"
     env_file:

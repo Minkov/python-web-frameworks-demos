@@ -15,7 +15,7 @@ CSRF_TRUSTED_ORIGINS = [f'http://{x}:81' for x in os.environ.get('ALLOWED_HOSTS'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.getenv('DB_HOST', None),
         'PORT': os.getenv('DB_PORT', '5432'),
         'NAME': os.getenv('DB_NAME', None),
