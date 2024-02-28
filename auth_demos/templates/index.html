@@ -1,0 +1,14 @@
+<ul>
+    {% for model1 in model1_list %}
+        <li>
+            {#            {{ model1.title|safe }} {# XSS #}
+            {{ model1.title }} {# No XSS #}
+        </li>
+    {% endfor %}
+</ul>
+
+{% if False %} {# complex/auth check #}
+    <a href="{% url 'private_view' %}">Private view</a>
+{% endif %}
+
+{{ context_extras }}
