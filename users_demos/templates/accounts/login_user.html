@@ -1,0 +1,7 @@
+<form action="{% url 'login-user' %}?next={{ next }}" method="post">
+    {{ form.as_p }}
+
+    <button>Login</button>
+    or <a href="{% url 'register-user' %}">Register</a>
+    {% csrf_token %}
+</form>
