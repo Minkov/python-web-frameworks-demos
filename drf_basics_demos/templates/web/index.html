@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+    <div>
+        <form id="form-create-book">
+            <label>
+                Title:
+                <input type="text" name="title">
+            </label>
+
+            <label>
+                Author:
+                <input type="text" name="author">
+            </label>
+            <label>
+                <select name="genre">
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Science-Fiction">Sci-Fi</option>
+                </select>
+            </label>
+            <button id="btn-create-book">Create</button>
+        </form>
+        <ul id="book-list">
+
+        </ul>
+    </div>
+
+    <script>
+        {# Use jQuery #}
+
+        const renderList = () => {
+            document.getElementById("book-list").innerHTML = "LOADING, please wait!!!";
+            return fetch("{% url 'api_list_create_books' %}")
+                .then(res => res.json())
+                .then(bookList => {
+                    const items = [];
+
+                    for (const book of bookList) {
+                        items.push(
+                            `<li><strong>${book.title}</strong> by ${book.author}</li>`
+                        )
+                    }
+
+                    document.getElementById("book-list")
+                        .innerHTML = items.join("");
+                });
+        };
+
+        renderList();
+        document.getElementById("btn-create-book")
+            .addEventListener("click", (ev) => {
+
+                const csrftoken = '{{ csrf_token }}';
+                const data = {
+                    "title": document.querySelector("#form-create-book input[name=title]").value,
+                    "author": document.querySelector("#form-create-book input[name=author]").value,
+                    "genre": document.querySelector("#form-create-book select[name=genre]").value,
+                };
+                const url = "{% url 'api_list_create_books' %}"
+                fetch(url, {
+                    method: "post",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                        "content-type": "application/json",
+                    },
+                })
+                    .then(() => {
+                        return renderList();
+                    })
+
+                ev.preventDefault();
+                return false;
+            });
+    </script>
+</div>
+</body>
+</html>
