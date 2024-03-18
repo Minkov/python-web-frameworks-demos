@@ -20,11 +20,20 @@ D => POST /api/books/delete/2/ (GET /api/books/delete/ for HTML of the form)
 # RESTful API:
 C         => POST   /api/books/
 R all     => GET    /api/books/
+
 R details => GET    /api/books/2/
 U         => PUT    /api/books/2/
 D         => DELETE /api/books/2/
 
+# `4` is the ID of the book? Wrong:
+POST /api/comments/4
 
+# `/reviews` is a REST **action**
+POST /api/books/4/reviews
+GET /api/books/4/reviews
+
+# query params
+# `/books?author=1
 
 
 '''

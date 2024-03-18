@@ -54,7 +54,6 @@
         renderList();
         document.getElementById("btn-create-book")
             .addEventListener("click", (ev) => {
-
                 const csrftoken = '{{ csrf_token }}';
                 const data = {
                     "title": document.querySelector("#form-create-book input[name=title]").value,
@@ -62,12 +61,15 @@
                     "genre": document.querySelector("#form-create-book select[name=genre]").value,
                 };
                 const url = "{% url 'api_list_create_books' %}"
+                {# After login #}
+                sessionStorage.setItem("token", "....");
                 fetch(url, {
                     method: "post",
                     body: JSON.stringify(data),
                     headers: {
                         "X-CSRFToken": csrftoken,
                         "content-type": "application/json",
+                        "Authorization": `Token ${sessionStorage.getItem("token")}`,
                     },
                 })
                     .then(() => {

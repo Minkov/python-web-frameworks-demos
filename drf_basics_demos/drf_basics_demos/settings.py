@@ -26,6 +26,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,8 +42,10 @@ INSTALLED_APPS = [
 
     # The package is "djangorestframework", The django app is "rest_framework"
     "rest_framework",
+    "rest_framework.authtoken",
     "drf_spectacular",
     "drf_spectacular_sidecar",
+    "corsheaders",
 
     "drf_basics_demos.web.apps.WebConfig",
     "drf_basics_demos.api.apps.ApiConfig"
@@ -48,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -125,6 +132,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
 
 SPECTACULAR_SETTINGS = {
