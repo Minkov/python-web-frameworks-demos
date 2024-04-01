@@ -13,6 +13,11 @@ class IndexFbvTests(TestCase):
         self.assertEqual("users.html", context.template_name)
         self.assertEqual(200, response.status_code)
 
+
+
+
+
+
     def test_index_fbv__when_no_users__expect_empty_user_list(self):
         response = self.client.get(reverse("index_fbv"))
 
