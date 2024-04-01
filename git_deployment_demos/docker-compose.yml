@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "81:80" # 81 on local machine, 80 inside the docker container
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "./static_files:/usr/share/nginx/html"
+    env_file:
+      - ./.env
