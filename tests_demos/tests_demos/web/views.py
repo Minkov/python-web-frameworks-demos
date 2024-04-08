@@ -16,6 +16,10 @@ def show_users(request):
     return render(request, "users.html", context)
 
 
+
+
+
+
 class ListUsersView(auth_mixins.LoginRequiredMixin, views.ListView):
     model = UserModel
     template_name = "users.html"

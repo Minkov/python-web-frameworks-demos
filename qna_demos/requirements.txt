@@ -1,0 +1,8 @@
+asgiref==3.8.1
+certifi==2024.2.2
+cloudinary==1.39.1
+Django==5.0.4
+djangorestframework==3.15.1
+six==1.16.0
+sqlparse==0.4.4
+urllib3==2.2.1
